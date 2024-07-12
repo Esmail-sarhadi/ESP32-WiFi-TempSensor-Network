@@ -3,6 +3,7 @@
 
 This project implements a WiFi-based temperature and humidity monitoring network using ESP32 microcontrollers. It consists of an ESP32 Access Point (AP) that receives data from one or more ESP32 Stations (STA). The stations collect environmental data using DHT11 sensors and transmit it to the AP using UDP protocol.
 
+
 ![Alt text](Scenario.jpg)
 
 ## Features
