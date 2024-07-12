@@ -64,6 +64,7 @@ unsigned int localUdpPort = 61501;
 unsigned int remoteUdpPort = 61500;
 ```
 
+
 Ensure that the SSID and password match between AP and STA. Adjust IP addresses and UDP ports as needed.
 
 ## Usage
@@ -82,6 +83,7 @@ The STA sends data to the AP in the following format:
 ```
 n=1&Counter=1&Temperature=25.50&Humidity=60.00
 ```
+
 
 ## Network Structure
 
