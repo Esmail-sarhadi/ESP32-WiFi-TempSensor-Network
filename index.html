@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="vqq11CWNVkLVnZvjCeZReKc8-FRmgxek2SOWjr35CbY" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ESP32-WiFi-TempSensor-Network | A WiFi-based temperature and humidity monitoring system using ESP32 microcontrollers. This project consists of an ESP32 Access Point that receives data from one or more ESP32 Stations. The stations collect temperature and humidity data from DHT11 sensors and transmit it to the AP using UDP protocol.</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="ESP32-WiFi-TempSensor-Network" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A WiFi-based temperature and humidity monitoring system using ESP32 microcontrollers. This project consists of an ESP32 Access Point that receives data from one or more ESP32 Stations. The stations collect temperature and humidity data from DHT11 sensors and transmit it to the AP using UDP protocol." />
+<meta property="og:description" content="A WiFi-based temperature and humidity monitoring system using ESP32 microcontrollers. This project consists of an ESP32 Access Point that receives data from one or more ESP32 Stations. The stations collect temperature and humidity data from DHT11 sensors and transmit it to the AP using UDP protocol." />
+<link rel="canonical" href="https://esmail-sarhadi.github.io/ESP32-WiFi-TempSensor-Network/" />
+<meta property="og:url" content="https://esmail-sarhadi.github.io/ESP32-WiFi-TempSensor-Network/" />
+<meta property="og:site_name" content="ESP32-WiFi-TempSensor-Network" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ESP32-WiFi-TempSensor-Network" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"A WiFi-based temperature and humidity monitoring system using ESP32 microcontrollers. This project consists of an ESP32 Access Point that receives data from one or more ESP32 Stations. The stations collect temperature and humidity data from DHT11 sensors and transmit it to the AP using UDP protocol.","headline":"ESP32-WiFi-TempSensor-Network","name":"ESP32-WiFi-TempSensor-Network","url":"https://esmail-sarhadi.github.io/ESP32-WiFi-TempSensor-Network/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/ESP32-WiFi-TempSensor-Network/assets/css/style.css?v=289a2ded87e29683ff72920aba7012237543d13e">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/ESP32-WiFi-TempSensor-Network/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+
+      
+<h1 id="esp32-wifi-tempsensor-network">ESP32-WiFi-TempSensor-Network</h1>
+
+<p>This project implements a WiFi-based temperature and humidity monitoring network using ESP32 microcontrollers. It consists of an ESP32 Access Point (AP) that receives data from one or more ESP32 Stations (STA). The stations collect environmental data using DHT11 sensors and transmit it to the AP using UDP protocol.</p>
+
+<p><img src="/ESP32-WiFi-TempSensor-Network/Scenario.jpg" alt="Alt text" /></p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>ESP32 Access Point creation</li>
+  <li>WiFi communication using UDP</li>
+  <li>Temperature and humidity monitoring using DHT11 sensor</li>
+  <li>Multiple station support</li>
+  <li>RSSI (Received Signal Strength Indicator) reporting</li>
+  <li>Static IP configuration</li>
+</ul>
+
+<h2 id="hardware-requirements">Hardware Requirements</h2>
+
+<ul>
+  <li>At least 2 ESP32 development boards (1 for AP, 1+ for STA)</li>
+  <li>DHT11 temperature and humidity sensor(s) (one per STA)</li>
+  <li>Appropriate power supply for each ESP32</li>
+</ul>
+
+<h2 id="software-dependencies">Software Dependencies</h2>
+
+<ul>
+  <li>Arduino IDE</li>
+  <li>ESP32 board support for Arduino</li>
+  <li>WiFi library (built-in with ESP32 board support)</li>
+  <li>WiFiUdp library (built-in with ESP32 board support)</li>
+  <li>DHT sensor library</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<ol>
+  <li>Install the Arduino IDE and ESP32 board support.</li>
+  <li>Install the required DHT sensor library.</li>
+  <li>Clone this repository or download the source code.</li>
+  <li>Open the <code class="language-plaintext highlighter-rouge">.ino</code> files in Arduino IDE.</li>
+</ol>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="access-point-ap-configuration">Access Point (AP) Configuration</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ssid</span> <span class="o">=</span> <span class="s">"ESP_AP01"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">password</span> <span class="o">=</span> <span class="s">"ESP123456789"</span><span class="p">;</span>
+<span class="n">IPAddress</span> <span class="nf">localDevIP</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="n">IPAddress</span> <span class="nf">gateway</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">IPAddress</span> <span class="nf">subnet</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">localUdpPort</span> <span class="o">=</span> <span class="mi">61500</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="station-sta-configuration">Station (STA) Configuration</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s">"ESP_AP01"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"ESP123456789"</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">numNode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">numPeriod</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+<span class="n">IPAddress</span> <span class="nf">localDevIP</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">101</span><span class="p">);</span>
+<span class="n">IPAddress</span> <span class="nf">remoteDevIP</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="n">IPAddress</span> <span class="nf">gateway</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">IPAddress</span> <span class="nf">subnet</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">localUdpPort</span> <span class="o">=</span> <span class="mi">61501</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">remoteUdpPort</span> <span class="o">=</span> <span class="mi">61500</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ensure that the SSID and password match between AP and STA. Adjust IP addresses and UDP ports as needed.</p>
+
+<h2 id="usage">Usage</h2>
+
+<ol>
+  <li>Upload the AP code to one ESP32.</li>
+  <li>Upload the STA code to one or more other ESP32s.</li>
+  <li>Power on all devices.</li>
+  <li>The AP will create a WiFi network, and the STAs will connect to it.</li>
+  <li>STAs will send temperature and humidity data to the AP at regular intervals.</li>
+  <li>Monitor the Serial output on both AP and STAs for debugging information.</li>
+</ol>
+
+<h2 id="data-format">Data Format</h2>
+
+<p>The STA sends data to the AP in the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n=1&amp;Counter=1&amp;Temperature=25.50&amp;Humidity=60.00
+</code></pre></div></div>
+
+<h2 id="network-structure">Network Structure</h2>
+
+<ul>
+  <li>The AP creates a WiFi network with the configured SSID and password.</li>
+  <li>Each STA connects to this network with a unique IP address.</li>
+  <li>STAs send UDP packets to the AP’s IP address and port.</li>
+  <li>The AP receives these packets and can process or forward the data as needed.</li>
+</ul>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>Contributions to improve the project are welcome. Please feel free to submit a Pull Request.</p>
+
+<h2 id="license">License</h2>
+
+<p>This project is open-source and available under the <a href="/ESP32-WiFi-TempSensor-Network/LICENSE">MIT License</a>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/Esmail-sarhadi/ESP32-WiFi-TempSensor-Network/edit/main/README.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
