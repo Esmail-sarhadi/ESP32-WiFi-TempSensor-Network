@@ -87,7 +87,9 @@ n=1&Counter=1&Temperature=25.50&Humidity=60.00
 
 ## Network Structure
 
-- The AP creates a WiFi network with the configured SSID and password.
+- The AP creates a WiFi network with the configured SSID and password.<a href="https://nowpayments.io/donation?api_key=REWCYVC-A1AMFK3-QNRS663-PKJSBD2&source=lk_donation&medium=referral" target="_blank">
+     <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
+    </a>
 - Each STA connects to this network with a unique IP address.
 - STAs send UDP packets to the AP's IP address and port.
 - The AP receives these packets and can process or forward the data as needed.
@@ -99,3 +101,7 @@ Contributions to improve the project are welcome. Please feel free to submit a P
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
+
+<a href="https://nowpayments.io/donation?api_key=REWCYVC-A1AMFK3-QNRS663-PKJSBD2&source=lk_donation&medium=referral" target="_blank">
+  <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
+</a>
